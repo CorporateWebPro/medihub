@@ -306,7 +306,7 @@ For support, email support@medequipkenya.com or create an issue in the repositor
 
 ## 📞 Contact
 
-**Medical Equipment Kenya**
+**MediHub Kenya**
 - Website: https://medequipkenya.com
 - Email: info@medequipkenya.com
 - Phone: +254 700 000 000
