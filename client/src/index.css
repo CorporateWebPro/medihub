@@ -1,0 +1,378 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom medical theme colors */
+:root {
+  --primary-blue: #0284c7;
+  --primary-blue-dark: #0369a1;
+  --secondary-green: #059669;
+  --accent-orange: #ea580c;
+  --medical-red: #dc2626;
+  --neutral-gray: #6b7280;
+  --light-gray: #f9fafb;
+  --border-gray: #e5e7eb;
+}
+
+/* Custom utility classes */
+.text-primary {
+  color: var(--primary-blue);
+}
+
+.bg-primary {
+  background-color: var(--primary-blue);
+}
+
+.bg-primary-dark {
+  background-color: var(--primary-blue-dark);
+}
+
+.text-secondary {
+  color: var(--secondary-green);
+}
+
+.bg-secondary {
+  background-color: var(--secondary-green);
+}
+
+.text-accent {
+  color: var(--accent-orange);
+}
+
+.bg-accent {
+  background-color: var(--accent-orange);
+}
+
+/* Medical equipment specific styles */
+.medical-gradient {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-green) 100%);
+}
+
+.medical-card {
+  @apply bg-white rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-shadow duration-300;
+}
+
+.medical-button {
+  @apply inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200;
+}
+
+.medical-button-secondary {
+  @apply inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-200;
+}
+
+.medical-input {
+  @apply appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm;
+}
+
+/* Product grid styles */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.product-card {
+  @apply medical-card overflow-hidden;
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-image {
+  @apply transition-transform duration-300;
+}
+
+/* Category styles */
+.category-card {
+  @apply medical-card p-6 text-center cursor-pointer hover:bg-blue-50 transition-colors duration-200;
+}
+
+.category-icon {
+  @apply w-16 h-16 mx-auto mb-4 text-primary;
+}
+
+/* Filter styles */
+.filter-sidebar {
+  @apply sticky top-4 h-fit;
+}
+
+.filter-section {
+  @apply mb-6 pb-6 border-b border-gray-200 last:border-b-0;
+}
+
+.filter-title {
+  @apply text-lg font-semibold text-gray-900 mb-3;
+}
+
+.filter-option {
+  @apply flex items-center space-x-2 py-1;
+}
+
+.filter-checkbox {
+  @apply h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded;
+}
+
+/* Rating styles */
+.rating-stars {
+  @apply flex items-center space-x-1;
+}
+
+.rating-star {
+  @apply h-4 w-4;
+}
+
+.rating-star.filled {
+  @apply text-yellow-400;
+}
+
+.rating-star.empty {
+  @apply text-gray-300;
+}
+
+/* Badge styles */
+.stock-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.stock-badge.in-stock {
+  @apply bg-green-100 text-green-800;
+}
+
+.stock-badge.low-stock {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.stock-badge.out-of-stock {
+  @apply bg-red-100 text-red-800;
+}
+
+.discount-badge {
+  @apply absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full;
+}
+
+/* Loading styles */
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid var(--primary-blue);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+/* Navigation styles */
+.nav-link {
+  @apply text-gray-700 hover:text-primary transition-colors duration-200;
+}
+
+.nav-link.active {
+  @apply text-primary font-medium;
+}
+
+/* Breadcrumb styles */
+.breadcrumb {
+  @apply flex items-center space-x-2 text-sm text-gray-500;
+}
+
+.breadcrumb-separator {
+  @apply text-gray-400;
+}
+
+/* Search styles */
+.search-dropdown {
+  @apply absolute top-full left-0 right-0 bg-white border border-gray-200 rounded-b-lg shadow-lg z-50;
+}
+
+.search-suggestion {
+  @apply px-4 py-2 hover:bg-gray-50 cursor-pointer border-b border-gray-100 last:border-b-0;
+}
+
+/* Cart styles */
+.cart-item {
+  @apply flex items-center space-x-4 py-4 border-b border-gray-200 last:border-b-0;
+}
+
+.quantity-controls {
+  @apply flex items-center border border-gray-300 rounded;
+}
+
+.quantity-button {
+  @apply w-8 h-8 flex items-center justify-center text-gray-600 hover:bg-gray-100 transition-colors duration-200;
+}
+
+.quantity-input {
+  @apply w-16 text-center border-0 focus:ring-0 py-1;
+}
+
+/* Review styles */
+.review-card {
+  @apply medical-card p-6 mb-4;
+}
+
+.review-header {
+  @apply flex items-start justify-between mb-3;
+}
+
+.review-author {
+  @apply font-medium text-gray-900;
+}
+
+.review-date {
+  @apply text-sm text-gray-500;
+}
+
+.review-content {
+  @apply text-gray-700 leading-relaxed;
+}
+
+.review-helpful {
+  @apply flex items-center space-x-4 mt-4 pt-4 border-t border-gray-200;
+}
+
+/* Admin styles */
+.admin-sidebar {
+  @apply fixed inset-y-0 left-0 z-50 w-64 bg-gray-900 text-white transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0;
+}
+
+.admin-sidebar.open {
+  @apply translate-x-0;
+}
+
+.admin-nav-item {
+  @apply flex items-center px-4 py-2 text-gray-300 hover:bg-gray-700 hover:text-white transition-colors duration-200;
+}
+
+.admin-nav-item.active {
+  @apply bg-gray-700 text-white;
+}
+
+/* Table styles */
+.data-table {
+  @apply min-w-full divide-y divide-gray-200;
+}
+
+.data-table th {
+  @apply px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider;
+}
+
+.data-table td {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-gray-900;
+}
+
+.data-table tr:nth-child(even) {
+  @apply bg-gray-50;
+}
+
+/* Modal styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50;
+}
+
+.modal-content {
+  @apply relative top-20 mx-auto p-5 border w-11/12 max-w-md shadow-lg rounded-md bg-white;
+}
+
+/* Form styles */
+.form-group {
+  @apply mb-4;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-700 mb-2;
+}
+
+.form-error {
+  @apply text-red-600 text-sm mt-1;
+}
+
+.form-help {
+  @apply text-gray-500 text-sm mt-1;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .container {
+    @apply px-4;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* Accessibility improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus styles for better accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500;
+}
+
+/* Custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
